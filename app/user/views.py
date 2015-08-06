@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 
-from .functions import user_exists, get_constituency
+from .functions import user_exists, get_constituency, generate_salt
 
 user = Blueprint('user', __name__, url_prefix='/user')
 
@@ -16,3 +16,8 @@ def exists(id):
 @user.route('/new/<long>/<lat>')
 def new(long, lat):
     constituency = get_constituency(long, lat)
+    for key in constituency.keys():
+    	const_id = key
+    	break
+    
+
