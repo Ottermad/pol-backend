@@ -14,5 +14,14 @@ class User(Model):
     class Meta:
         database = DATABASE
 
+    def to_dict(self):
+        data = {
+            'salt': self.salt,
+            'admin': self.admin,
+            'signup_time': self.signup_time,
+            'constituency': self.constituency
+        }
+        return data
+
 
 
