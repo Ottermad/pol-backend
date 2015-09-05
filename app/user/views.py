@@ -27,3 +27,8 @@ def new(long, lat):
         constituency=const_id
     )
     return jsonify(new_user.to_dict())
+
+@user.route('/return/<id>')
+def return_from_id(id):
+    found_user = User.from_id(id)
+    return jsonify(found_user.to_dict())

@@ -14,14 +14,25 @@ class User(Model):
     class Meta:
         database = DATABASE
 
+
+    @classmethod
+    def from_id(cls, id):
+        for user in User.select():
+            user_id = "{}{}".format(user.id, user.salt)
+            if user_id == str(id):
+                return user
+
     def to_dict(self):
         data = {
-            'salt': self.salt,
+            'id': "{}{}".format(self.id, self.salt),
             'admin': self.admin,
             'signup_time': self.signup_time,
             'constituency': self.constituency
         }
         return data
+
+
+
 
 
 

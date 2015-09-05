@@ -204,7 +204,7 @@ if($query === "post" && $action === "return"){
 		$getPosts = $db->prepare("SELECT * FROM posts WHERE tags LIKE :tag AND constituency = :constituency ORDER BY $order DESC LIMIT $limit");
 		$getPosts->bindParam(":constituency",$_GET["constituency"]);
 		$getPosts->bindParam(":tag",$_GET["tag"]);
-		$getPosts->execute();
+		$g etPosts->execute();
 		$posts = $getPosts->fetchAll(PDO::FETCH_ASSOC);
 	}else{
 		$getPosts = $db->prepare("SELECT * FROM posts WHERE constituency = :constituency ORDER BY $order DESC LIMIT $limit");
